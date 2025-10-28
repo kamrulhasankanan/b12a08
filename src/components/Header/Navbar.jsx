@@ -5,9 +5,9 @@ import { FaAward } from "react-icons/fa";
 const Navbar = () => {
   const links = (
     <>
-      <Link className="mr-4">Home</Link>
-      <Link className="mr-4">Apps</Link>
-      <Link>Installation</Link>
+      <Link to='/' className="mr-4">Home</Link>
+      <Link to='/appsItems' className="mr-4">Apps</Link>
+      <Link to='/installation'>Installation</Link>
     </>
   );
 
@@ -39,21 +39,21 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <Link><a className="btn btn-ghost text-xl text-[#9f62f2]">
+        <Link to='/' className="btn btn-ghost text-xl text-[#9f62f2]">
           <span>
             <img className="h-9" src="/public/logo.png" alt="" />
           </span>
           HERO.IO
-        </a></Link>
+        </Link>
         
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn bg-linear-[125.07deg,#632ee3,#9f62f2] text-white">
+        <Link to='/' className="btn bg-linear-[125.07deg,#632ee3,#9f62f2] text-white">
           <FaAward></FaAward>Contribute
-        </a>
+        </Link>
       </div>
     </div>
   );

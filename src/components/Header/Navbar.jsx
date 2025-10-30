@@ -1,13 +1,16 @@
 import React from "react";
 import { Link } from "react-router";
-import { FaAward } from "react-icons/fa";
+import { FaGithub } from 'react-icons/fa';
+import { FaHome } from 'react-icons/fa';
+import { RiAppStoreLine } from 'react-icons/ri';
+import { RiInstallLine } from 'react-icons/ri';
 
 const Navbar = () => {
   const links = (
     <>
-      <Link to='/' className="mr-4">Home</Link>
-      <Link to='/appsItems' className="mr-4">Apps</Link>
-      <Link to='/installation'>Installation</Link>
+      <Link to='/' className="mr-8 flex items-center gap-1"><FaHome></FaHome>Home</Link>
+      <Link to='/appsItems' className="mr-8 flex items-center gap-1"><RiAppStoreLine></RiAppStoreLine>Apps</Link>
+      <Link to='/installation' className="flex items-center gap-1"><RiInstallLine></RiInstallLine>Installation</Link>
     </>
   );
 
@@ -52,7 +55,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <Link to='/' className="btn bg-linear-[125.07deg,#632ee3,#9f62f2] text-white">
-          <FaAward></FaAward>Contribute
+          <FaGithub></FaGithub>Contribute
         </Link>
       </div>
     </div>

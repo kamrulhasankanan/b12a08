@@ -8,12 +8,8 @@ const AppsItems = () => {
   const [search, setSearch] = useState("");
   const term = search.trim().toLocaleLowerCase();
   const searchedApps = term
-    ? appsData.filter((app) =>
-        app.title.toLocaleLowerCase().includes(term)
-      )
+    ? appsData.filter((app) => app.title.toLocaleLowerCase().includes(term))
     : appsData;
-
-  
 
   return (
     <div className="px-4 md:px-8 lg:px-12 bg-base-200">

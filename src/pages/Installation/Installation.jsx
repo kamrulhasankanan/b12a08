@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineDownload } from "react-icons/ai";
 import { FcRating } from "react-icons/fc";
+import { toast, ToastContainer } from "react-toastify";
 
 
 const Installation = () => {
@@ -30,13 +31,19 @@ const Installation = () => {
 
     setInstall(updatedList)    
     localStorage.setItem('install', JSON.stringify(updatedList))
+
+    toast.info("App Removed",{
+      position: 'top-right',
+      autoClose: 2000
+    })
+
   }
 
 
   return (
     <div className="bg-base-200 min-h-screen p-8 space-y-6">
       <div className="text-center">
-        <h1 className="text-4xl font-semibold py-4">Your Installed Apps</h1>
+        <h1 className="text-4xl font-semibold py-4">Installed Apps</h1>
         <p className="text-sm text-gray-400">
           Explore All Trending Apps on the Market developed by us
         </p>
@@ -89,11 +96,12 @@ const Installation = () => {
               </div>
             </div>
             <div className="flex items-center pr-4">
-              <button onClick={()=>handleRemoveApp(a.id)} className="btn btn-success text-white">Uninstall</button>
+              <button onClick={()=>handleRemoveApp(a.id) } className="btn btn-success text-white">Uninstall</button>
             </div>
           </div>
         ))}
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };

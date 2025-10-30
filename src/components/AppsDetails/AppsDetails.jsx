@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router";
 import useAppsData from "../../Hooks/useAppsData";
 import { AiOutlineDownload } from "react-icons/ai";
@@ -15,31 +15,39 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { toast, ToastContainer } from "react-toastify";
 
 const AppsDetails = () => {
   const { id } = useParams();
 
-  const { appsData, loading, error } = useAppsData();
+  const { appsData, loading } = useAppsData();
 
   const app = appsData.find((a) => String(a.id) === id);
 
-  if (loading) return <p className="text-2xl text-red-500">Loading.....</p>;
+  const [installed, setInstalled] = useState(false);
+
+  if (loading) return <p className="text-5xl font-bold">Loading.....</p>;
 
   const { image, title, description, size, downloads, ratingAvg, reviews } =
     app;
 
   const handleInstallApps = () => {
-    const existingList = JSON.parse(localStorage.getItem("install"));
-    let updatedList = [];
+    const existingList = JSON.parse(localStorage.getItem("install")) || [];
+
     if (existingList) {
       const isDuplicate = existingList.some((a) => a.id === app.id);
-      if (isDuplicate) return alert("App Installed");
-
-      updatedList = [...existingList, app];
-    } else {
-      updatedList.push(app);
+      if (isDuplicate) return toast.info("Already Installed")
     }
+
+    const updatedList = [...existingList, app];
+
     localStorage.setItem("install", JSON.stringify(updatedList));
+
+    setInstalled(true);
+    toast.success("App Install Successfully", {
+      position: "top-right",
+      autoClose: 2000,
+    });
   };
 
   return (
@@ -76,8 +84,12 @@ const AppsDetails = () => {
                 <p className="text-2xl font-extrabold">{reviews}</p>
               </div>
             </div>
-            <button onClick={handleInstallApps} className="btn btn-secondary">
-              Install Now ({size})
+            <button
+              onClick={handleInstallApps}
+              disabled={installed}
+              className="btn btn-secondary"
+            >
+              {installed ? "Installed" : `Install Now (${size})`}
             </button>
           </div>
         </div>
@@ -90,7 +102,7 @@ const AppsDetails = () => {
             <BarChart data={app.ratings}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
-              <YAxis width="auto"/>
+              <YAxis width="auto" />
               <Tooltip />
               <Legend />
 
@@ -103,6 +115,7 @@ const AppsDetails = () => {
         <h3 className="text-2xl font-semibold py-4">Description</h3>
         <p className="text-gray-500">{description}</p>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };

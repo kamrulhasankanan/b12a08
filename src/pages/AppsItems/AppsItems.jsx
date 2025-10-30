@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useAppsData from "../../Hooks/useAppsData";
 import AppCard from "../../components/AppCard/AppCard";
+import { Link } from "react-router";
 
 const AppsItems = () => {
   const { appsData } = useAppsData();
@@ -10,6 +11,8 @@ const AppsItems = () => {
   const searchedApps = term
     ? appsData.filter((app) => app.title.toLocaleLowerCase().includes(term))
     : appsData;
+
+  if (!searchedApps.length) return <p className="text-5xl text-center min-h-screen bg-base-200 p-50 font-bold">Opps, No Apps Found ! <Link to='/' className="btn btn-primary">Go Back</Link></p>
 
   return (
     <div className="px-4 md:px-8 lg:px-12 bg-base-200">

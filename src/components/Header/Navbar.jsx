@@ -44,7 +44,7 @@ const Navbar = () => {
         </div>
         <Link to='/' className="btn btn-ghost text-xl text-[#9f62f2]">
           <span>
-            <img className="h-9" src="/public/logo.png" alt="" />
+            <img className="h-9" src="/logo.png" alt="" />
           </span>
           HERO.IO
         </Link>

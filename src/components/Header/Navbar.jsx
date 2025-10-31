@@ -54,9 +54,9 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <Link to='/' className="btn bg-linear-[125.07deg,#632ee3,#9f62f2] text-white">
+        <a href="https://github.com/kamrulhasankanan" className="btn bg-linear-[125.07deg,#632ee3,#9f62f2] text-white">
           <FaGithub></FaGithub>Contribute
-        </Link>
+        </a>
       </div>
     </div>
   );

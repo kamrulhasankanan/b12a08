@@ -11,8 +11,8 @@ const Banner = () => {
           <p className="py-6">
             At HERO.IO, we craft innovative apps designed to make everyday life simpler, smarter, and more exciting. Our goal is to turn your ideas into digital experiences that truly make an impact.
           </p>
-          <button className="btn mr-3.5 font-bold"><FaGooglePlay></FaGooglePlay> Google Play</button>
-          <button className="btn font-bold"><FaAppStore></FaAppStore> Apple Store</button>
+          <a href="https://play.google.com/store/apps" className="btn mr-3.5 font-bold"><FaGooglePlay></FaGooglePlay> Google Play</a>
+          <a href="https://www.apple.com/app-store/" className="btn font-bold"><FaAppStore></FaAppStore> Apple Store</a>
         </div>
       </div>
       <div>
